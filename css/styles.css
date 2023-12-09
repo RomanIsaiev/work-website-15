@@ -1810,3 +1810,94 @@ p {
 
   border: none;
 }
+
+/* footer */
+
+.footer {
+  padding-top: 38px;
+  padding-bottom: 40px;
+  background: #070707;
+}
+
+.footer-deals > a[href='https://docs.google.com/document/d/1Z0BVPcHT9o-6vdJISrOgjtbM_y7jR4Qj/edit?usp=sharing&ouid=108989837820225280859&rtpof=true&sd=true']
+{
+  margin-bottom: 12px;
+}
+
+.footer-deals a {
+  display: block;
+
+  color: var(--white, #fff);
+  text-align: center;
+  font-family: Futura PT;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.footer-deals::after {
+  content: '';
+  display: block;
+
+  height: 1px;
+  width: 100px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    #fff 52.6%,
+    rgba(255, 255, 255, 0) 100%
+  );
+
+  margin-top: 24px;
+  margin-bottom: 24px;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.social-container {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  align-items: center;
+
+  margin-bottom: 40px;
+}
+
+.footer-mail-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 30px;
+}
+
+.footer-mail {
+  display: block;
+  color: var(--white, #fff);
+  font-family: Futura PT;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration-line: underline;
+}
+
+.fop-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.fop-container p {
+  color: var(--white, #fff);
+  text-align: center;
+  font-family: Futura PT;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
