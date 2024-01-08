@@ -1,113 +1,66 @@
-document.addEventListener('DOMContentLoaded', function () {
-  // конечная дата, например 1 июля 2021
-  const deadline = new Date(2024, 2, 1, 8, 0, 0);
-  // id таймера
-  let timerId = null;
-  // склонение числительных
-  function declensionNum(num, words) {
-    return words[
-      num % 100 > 4 && num % 100 < 20
-        ? 2
-        : [2, 0, 1, 1, 1, 2][num % 10 < 5 ? num % 10 : 5]
-    ];
-  }
-  // вычисляем разницу дат и устанавливаем оставшееся времени в качестве содержимого элементов
-  function countdownTimer() {
-    const diff = deadline - new Date();
-    if (diff <= 0) {
-      clearInterval(timerId);
+// timer-one
+
+function getTimeRemaining(endtime) {
+  var t = Date.parse(endtime) - Date.parse(new Date());
+  var seconds = Math.floor((t / 1000) % 60);
+  var minutes = Math.floor((t / 1000 / 60) % 60);
+  var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+  return {
+    total: t,
+    hours: hours,
+    minutes: minutes,
+    seconds: seconds,
+  };
+}
+
+function initializeClock(id, endtime) {
+  var clock = document.getElementById(id);
+  var hoursSpan = clock.querySelector('.hours');
+  var minutesSpan = clock.querySelector('.minutes');
+  var secondsSpan = clock.querySelector('.seconds');
+
+  function updateClock() {
+    var t = getTimeRemaining(endtime);
+    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+      var deadline = new Date(Date.parse(endtime) + 24 * 60 * 60 * 1000);
+      initializeClock('countdown', deadline);
     }
-    const days = diff > 0 ? Math.floor(diff / 1000 / 60 / 60 / 24) : 0;
-    const hours = diff > 0 ? Math.floor(diff / 1000 / 60 / 60) % 24 : 0;
-    const minutes = diff > 0 ? Math.floor(diff / 1000 / 60) % 60 : 0;
-    const seconds = diff > 0 ? Math.floor(diff / 1000) % 60 : 0;
-    $days.textContent = days < 10 ? '0' + days : days;
-    $hours.textContent = hours < 10 ? '0' + hours : hours;
-    $minutes.textContent = minutes < 10 ? '0' + minutes : minutes;
-    $seconds.textContent = seconds < 10 ? '0' + seconds : seconds;
-    $days.dataset.title = declensionNum(days, ['день', 'дні', 'днів']);
-    $hours.dataset.title = declensionNum(hours, ['година', 'години', 'годин']);
-    $minutes.dataset.title = declensionNum(minutes, [
-      'хвилина',
-      'хвилини',
-      'хвилин',
-    ]);
-    $seconds.dataset.title = declensionNum(seconds, [
-      'секунда',
-      'секунди',
-      'секунд',
-    ]);
   }
 
-  // получаем элементы, содержащие компоненты даты
-  const $days = document.querySelector('.timer__days');
-  const $hours = document.querySelector('.timer__hours');
-  const $minutes = document.querySelector('.timer__minutes');
-  const $seconds = document.querySelector('.timer__seconds');
-  // вызываем функцию countdownTimer
-  countdownTimer();
+  updateClock();
+  var timeinterval = setInterval(updateClock, 1000);
+}
 
-  function countdownTimerTwo() {
-    const diff = deadline - new Date();
-    if (diff <= 0) {
-      clearInterval(timerId);
+function initializeClockTwo(id, endtime) {
+  var clock = document.getElementById(id);
+  var hoursSpan = clock.querySelector('.hours-two');
+  var minutesSpan = clock.querySelector('.minutes-two');
+  var secondsSpan = clock.querySelector('.seconds-two');
+
+  function updateClock() {
+    var t = getTimeRemaining(endtime);
+    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+      var deadline = new Date(Date.parse(endtime) + 24 * 60 * 60 * 1000);
+      initializeClockTwo('countdown-two', deadline);
     }
-    const daysTwo = diff > 0 ? Math.floor(diff / 1000 / 60 / 60 / 24) : 0;
-    const hoursTwo = diff > 0 ? Math.floor(diff / 1000 / 60 / 60) % 24 : 0;
-    const minutesTwo = diff > 0 ? Math.floor(diff / 1000 / 60) % 60 : 0;
-    const secondsTwo = diff > 0 ? Math.floor(diff / 1000) % 60 : 0;
-    $daysTwo.textContent = daysTwo < 10 ? '0' + daysTwo : daysTwo;
-    $hoursTwo.textContent = hoursTwo < 10 ? '0' + hoursTwo : hoursTwo;
-    $minutesTwo.textContent = minutesTwo < 10 ? '0' + minutesTwo : minutesTwo;
-    $secondsTwo.textContent = secondsTwo < 10 ? '0' + secondsTwo : secondsTwo;
-    $daysTwo.dataset.title = declensionNum(daysTwo, ['день', 'дні', 'днів']);
-    $hoursTwo.dataset.title = declensionNum(hoursTwo, [
-      'година',
-      'години',
-      'годин',
-    ]);
-    $minutesTwo.dataset.title = declensionNum(minutesTwo, [
-      'хвилина',
-      'хвилини',
-      'хвилин',
-    ]);
-    $secondsTwo.dataset.title = declensionNum(secondsTwo, [
-      'секунда',
-      'секунди',
-      'секунд',
-    ]);
   }
 
-  const $daysTwo = document.querySelector('.timer__daysTwo');
-  const $hoursTwo = document.querySelector('.timer__hoursTwo');
-  const $minutesTwo = document.querySelector('.timer__minutesTwo');
-  const $secondsTwo = document.querySelector('.timer__secondsTwo');
+  updateClock();
+  var timeinterval = setInterval(updateClock, 1000);
+}
 
-  countdownTimerTwo();
+var deadline = 'September 31 2024 00:00:00 GMT+0200';
+initializeClock('countdown', deadline);
+initializeClockTwo('countdown-two', deadline);
 
-  // вызываем функцию countdownTimer каждую секунду
-  timerId = setInterval(countdownTimer, 1000);
-  timerId = setInterval(countdownTimerTwo, 1000);
-});
-
-// $days.dataset.title = declensionNum(days, ['день', 'дні', 'днів']);
-// $hours.dataset.title = declensionNum(hours, ['година', 'години', 'годин']);
-// $minutes.dataset.title = declensionNum(minutes, [
-//   'хвилина',
-//   'хвилини',
-//   'хвилин',
-// ]);
-// $seconds.dataset.title = declensionNum(seconds, [
-//   'секунда',
-//   'секунди',
-//   'секунд',
-// ]);
-
-// $days.dataset.title = declensionNum(days, ['день', 'дня', 'дней']);
-// $hours.dataset.title = declensionNum(hours, ['час', 'часа', 'часов']);
-// $minutes.dataset.title = declensionNum(minutes, ['минута', 'минуты', 'минут']);
-// $seconds.dataset.title = declensionNum(seconds, [
-//   'секунд',
-//   'секунды',
-//   'секунд',
-// ]);
+// timer-two

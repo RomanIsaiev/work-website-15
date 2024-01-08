@@ -394,17 +394,19 @@ p {
 
 /* timer */
 
-.timer {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+.countdown {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 32px;
 }
 
-.timer__items {
-  display: flex;
-  justify-content: center;
-}
-.timer__item {
+.countdown-time {
+  display: block;
+
   color: #fff;
   text-align: center;
   font-family: Futura PT;
@@ -414,40 +416,25 @@ p {
   line-height: normal;
   letter-spacing: -0.64px;
 
-  position: relative;
-  min-width: 60px;
-  margin-left: 10px;
-  margin-right: 10px;
-  padding-bottom: 10px;
+  width: 70px;
 }
 
-.timer__item:first-child {
-  margin-left: 0;
-}
-
-.timer__item:last-child {
-  margin-right: 0;
-}
-
-.timer__item::before {
-  content: attr(data-title);
-  display: block;
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-  font-size: 12px;
-}
-.timer__item:not(:last-child)::after {
+.countdown-doubledot {
   content: '';
+  display: flex;
 
-  width: 1px;
   height: 25px;
+  width: 1px;
   background: #fff;
 
-  position: absolute;
-  top: 4px;
-  right: -11px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 /* section-one */
@@ -1117,6 +1104,52 @@ p {
   position: absolute;
   top: 4px;
   right: -11px;
+}
+
+/* timer-two */
+
+/* timer-two */
+
+.countdown-two {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 32px;
+}
+
+.countdown-time-two {
+  display: block;
+  color: #000;
+  text-align: center;
+  font-family: Manrope;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.64px;
+
+  width: 70px;
+}
+
+.countdown-doubledot-two {
+  content: '';
+  display: flex;
+
+  height: 30px;
+  width: 1px;
+  background: #000;
+
+  margin-top: 40px;
+  margin-bottom: 40px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 /* ******************* */
